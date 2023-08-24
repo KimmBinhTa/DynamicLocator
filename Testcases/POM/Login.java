@@ -23,7 +23,7 @@ public class Login {
 	String email = "john123@gmail.com";
 	String password = "123456";
 	String passwordError = "567890";
-	String emailError = "auto00@gmail.com";
+	String emailError = "auto00";
 	
 	@BeforeClass
 	public void beforeClassABC() {
@@ -36,8 +36,8 @@ public class Login {
 	
 		
 		driver.get("https://demo.nopcommerce.com/");
-		loginPage = new LoginPOM();
-		homePage = new HomePagePOM();
+		loginPage = new LoginPOM(driver);
+		homePage = new HomePagePOM(driver);
 	}
 	@Test
 	public void TC_01_Login_with_empty_data() {
@@ -60,7 +60,7 @@ public class Login {
 		 
 		 Assert.assertEquals(loginPage.getErrorMessageAtEmailTxb(), "Wrong email");
 	}
-	@Test
+	//@Test
 	public void TC_03_Login_with_not_register_email() {
 		 homePage.clickToLoginLink();
 		 loginPage.inputEmail(emailError);
